@@ -47,6 +47,6 @@ CREATE TABLE IF NOT EXISTS `pool_worker` (
   `monitor` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
-  KEY `account_id` (`account_id`),
+  KEY `account_id` (`account_id`)  
   KEY `pool_worker_username` (`username`(10))
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
