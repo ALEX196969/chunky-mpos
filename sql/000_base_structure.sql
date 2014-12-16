@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `username` varchar(40) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL COMMENT 'Assocaited email: used for validating users, and re-setting passwords',
+  `timezone` varchar(35) NOT NULL DEFAULT '415',
   `notify_email` VARCHAR( 255 ) NULL DEFAULT NULL,
   `loggedIp` varchar(255) DEFAULT NULL,
   `is_locked` tinyint(1) NOT NULL DEFAULT '0',
@@ -142,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   UNIQUE KEY `setting` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `settings` (`name`, `value`) VALUES ('DB_VERSION', '0.0.8');
+INSERT INTO `settings` (`name`, `value`) VALUES ('DB_VERSION', '0.0.15');
 
 CREATE TABLE IF NOT EXISTS `shares` (
   `id` bigint(30) NOT NULL AUTO_INCREMENT,
@@ -163,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `shares` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `shares_archive` (
-  `id` int(255) unsigned NOT NULL AUTO_INCREMENT,
-  `share_id` int(255) unsigned NOT NULL,
+  `id` bigint(30) unsigned NOT NULL AUTO_INCREMENT,
+  `share_id` bigint(30) unsigned NOT NULL,
   `username` varchar(120) NOT NULL,
   `our_result` enum('Y','N') DEFAULT NULL,
   `upstream_result` enum('Y','N') DEFAULT NULL,
@@ -224,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `account_id` int(255) unsigned NOT NULL,
   `type` varchar(25) DEFAULT NULL,
   `coin_address` varchar(255) DEFAULT NULL,
-  `amount` double DEFAULT '0',
+  `amount` decimal(50,30) DEFAULT '0',
   `block_id` int(255) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `txid` varchar(256) DEFAULT NULL,
@@ -237,12 +238,15 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   KEY `account_id_archived` (`account_id`,`archived`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `templates` (
-  `template` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 0,
-  `content` mediumtext,
-  `modified_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`template`)
+CREATE TABLE `statistics_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL,
+  `hashrate` bigint(20) unsigned NOT NULL,
+  `workers` int(11) NOT NULL,
+  `sharerate` float NOT NULL,
+  `timestamp` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `account_id_timestamp` (`account_id`,`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

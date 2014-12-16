@@ -1,12 +1,7 @@
-Description [ ![Codeship Status for TheSerapher/php-mpos](https://www.codeship.io/projects/40fa7600-61a6-0131-3fd3-367b94dc0d60/status?branch=next)](https://www.codeship.io/projects/12276)
+Description
 ===========
 
-MPOS is a web based Mining Portal for various crypto currencies. It was created by [TheSerapher](https://github.com/TheSerapher) and has hence grown quite large. Recently it was migrated into a Github Organization to make development easier. It's a community driven open source project. Support can be requested on IRC at https://webchat.freenode.net/?channels=#mpos
-
-
-**NOTE**: This project is still under development and commits are happening on a daily basis.
-I do not recommend using this for a live setup as of yet. Wait for the later Release Candidate
-if you wish to run your pool with it. Testing pools are much appreciated though!
+MPOS is a web based Mining Portal for various crypto currencies. It was created by [TheSerapher](https://github.com/TheSerapher) and has hence grown quite large. Recently it was migrated into a Github Organization to make development easier. It's a community driven open source project. Support can be requested on IRC at https://webchat.freenode.net/?channels=#mpos - Be **PATIENT** ... People listed in this channel may currently be inactive but most users there have offline logging of messages. They **will** see your questions and answer if they can. Don't join, ask the question and leave. Sit around if you want answers to your questions!
 
 Donations
 =========
@@ -15,13 +10,16 @@ Donations to this project are going directly to [TheSerapher](https://github.com
 
 * LTC address: `Lge95QR2frp9y1wJufjUPCycVsg5gLJPW8`
 * BTC address: `1HuYK6WPU8o3yWCrAaADDZPRpL5QiXitfv`
-* DOGE Address: `D6YtvxFGBmaD8Yq3i8LZsBQVPvCbZwCDzF`
+* DOGE address: `DANk8bnc3vHEf7Jthaxq1Xgn1BSiArNdjG`
+* 42Coin address: `4VxA6Ht59Mj6ikhA4gDXLiHuAaDCJEvYTZ`
+* FST address: `fiRqMgZyhjTN1GSEB3ZxV35JXsE5bjEaQ2`
+* FRK address: `FDcgGZjX2B29qevSuiuQVwXhkNhtQT4cEW`
 * Cryptsy Trade Key: `6ff7292142463b7b80cbbbdfc52334ba89727b11`
 
 Website Footer
 ==============
 
-When you decide to use `MPOS` please be so kind and leave the footer intact. You are not the author of the software and should honor those that have worked on it. I don't mind changing the LTC donation address at the bottom, but keep in mind who really wrote this software and would deserve those ;-).
+When you decide to use `MPOS` please be so kind and leave the footer intact. You are not the author of the software and should honor those that have worked on it. Keeping the footer intact helps spreading the word. Leaving the donation address untouched allows miners to donate to the author.
 
 Donors
 ======
@@ -79,15 +77,14 @@ The following feature have been implemented so far:
 
 * Fully re-written GUI with [Smarty][2] templates
  * Full file based template support
- * **NEW** SQL based templates
-* Mobile WebUI
-* Scrypt, SHA256, VARDIFF Support
+* VARDIFF Support
 * Reward Systems
  * Propotional, PPS and PPLNS
 * New Theme
  * Live Dashboard
  * AJAX Support
  * Overhauled API
+ * Bootstrap
 * Web User accounts
  * Re-Captcha protected registration form
 * Worker accounts
@@ -95,7 +92,7 @@ The following feature have been implemented so far:
  * Worker hashrates
 * Pool statistics
 * Block statistics
-* Pool donations, fees and block bonuses
+* Pool donations, bonuses, fees and block bonuses
 * Manual and auto payout
 * Transaction list
 * Admin Panel
@@ -105,24 +102,24 @@ The following feature have been implemented so far:
  * User Transactions
  * News Posts
  * Pool Settings
- * Templates
  * Pool Workers
  * User Reports
- * Template Overwrite
 * Notification system
  * IDLE Workers
  * New blocks found in pool
  * Auto Payout
  * Manual Payout
 * User-to-user Invitation System
-* Support for various coins via config
+* Support for various coins via coin class and config
  * All scrypt coins
  * All sha256d coins
+ * All x11 coins
+ * Others may be supported by creating a custom coin class 
 
 Installation
 ============
 
-Please take a look at the [Quick Start Guide](https://github.com/TheSerapher/php-mpos/wiki/Quick-Start-Guide). This will give you an idea how to setup `MPOS`.
+Please take a look at the [Quick Start Guide](https://github.com/TheSerapher/php-mpos/wiki/Quick-Start-Guide). This will give you an idea how to setup `MPOS`. Please be aware that the `master` branch is our currently considered stable system while `development` is used as a test bed for all upcoming changes for `master`. If you wish to run a stable, well tested system ensure you run `git checkout master`. If you decide to stick to the `development` branch with bleeding edge code and potential bugs, just `git clone` the project.
 
 Customization
 =============
@@ -131,7 +128,7 @@ This project was meant to allow users to easily customize the system and templat
 If you are just using the system, there will be no need to adjust anything. Things will work out of the box! But if you plan on creating
 your own theme, things are pretty easy:
 
-* Create a new theme folder in `public/templates/`
+* Create a new theme folder in `templates/`
 * Create a new site_assets folder in `public/site_assets`
 * Create your own complete custom template or copy from an existing one
 * Change your theme in the `Admin Panel` and point it to the newly created folder
@@ -153,6 +150,7 @@ There are a few other projects out there that take advantage of MPOS and it's in
 * [MPOS Eggdrop Module](https://github.com/iAmShorty/mpos-eggdrop-tcl) written in TCL, adding MPOS commands to this bot, using the MPOS API
 * [Windows Phone Pool App](http://www.windowsphone.com/en-us/store/app/meeneminermonitor/7ec6eac7-a642-409b-96c8-57b5cfdf45cf)
 * [iPhone iMPOS App](https://itunes.apple.com/us/app/impos/id742179239?mt=8)
+* [Other Windows Phone App](http://www.windowsphone.com/en-us/store/app/mining-info/952f1137-eb62-4613-8057-34576d3c9c44)
 
 Contributing
 ============
@@ -173,7 +171,7 @@ You can find the team on Freenode.net, #MPOS.
 Team Members
 ============
 
-Author and Github Owner: [TheSerapher](https://github.com/TheSerapher) aka Sebastian Grewe
+Author and Project Owner: [TheSerapher](https://github.com/TheSerapher) aka Sebastian Grewe
 
 Developers:
 

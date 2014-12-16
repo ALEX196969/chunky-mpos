@@ -35,7 +35,8 @@ if (SECHASH_CHECK) {
 
 // MODIFY THIS
 // We need to find our include files so set this properly
-define("BASEPATH", "../public/");
+define("BASEPATH", dirname(__FILE__) . "/");
+
 /*****************************************************
  * No need to change beyond this point               *
  *****************************************************/
@@ -51,14 +52,8 @@ $index = $key + 1;
 $coin = $argv[$index];
 
 // Include our configuration (holding defines for the requires)
-require_once(BASEPATH . 'include/config/global.inc.dist.php');
-require_once(BASEPATH . 'include/config/' . $coin . '/global.inc.php');
-
-require_once(BASEPATH . 'include/config/security.inc.dist.php');
-@include_once(BASEPATH . 'include/config/security.inc.php');
-
-require_once(BASEPATH . 'include/bootstrap.php');
-require_once(BASEPATH . 'include/version.inc.php');
+require_once(BASEPATH . '../include/bootstrap.php');
+require_once(BASEPATH . '../include/version.inc.php');
 
 // Command line switches
 array_shift($argv);
@@ -72,7 +67,7 @@ foreach ($argv as $option) {
 }
 
 // Load 3rd party logging library for running crons
-$log = KLogger::instance( 'logs/' . $cron_name, KLogger::INFO );
+$log = KLogger::instance( BASEPATH . '../logs/' . $cron_name, KLogger::INFO );
 $log->LogDebug('Starting ' . $cron_name);
 
 // Load the start time for later runtime calculations for monitoring
